@@ -1,0 +1,10 @@
+{
+  "name": "cicd-demo",
+  "version": "1.0.0",
+  "description": "CI/CD Pipeline Demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node --check app.js"
+  }
+}
