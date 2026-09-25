@@ -1,18 +1,19 @@
-const http = require("http");
+const express = require("express");
+const path = require("path");
+
+const app = express();
 
 const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {
-        "Content-Type": "text/html"
-    });
+// Serve HTML, CSS and JavaScript
+app.use(express.static(path.join(__dirname, "public")));
 
-    res.end(`
-        <h1>CI/CD Pipeline Successfully Deployed!</h1>
-        <p>Application is running successfully.</p>
-    `);
+// Health check
+app.get("/health", (req, res) => {
+    res.status(200).send("Server is healthy! CI/CD is working.");
 });
 
-server.listen(PORT, () => {
+// Start server
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
